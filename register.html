@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Requirement - SMART GRAM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --dark: #1f2937;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .location-section {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px dashed #bae6fd;
+            margin: 1.5rem 0;
+        }
+
+        .location-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .location-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .location-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .location-info {
+            background: #dcfce7;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .language-selector {
+            background: var(--light);
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.5rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span>🏆</span>
+                SMART GRAM
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="register.html" class="active"><i class="fas fa-edit"></i> Register Requirement</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community Space</a></li>
+                <li><a href="index.html#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+            </ul>
+            <select class="language-selector" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+            </select>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="form-card">
+            <h1 class="form-title">Register Infrastructure Requirement</h1>
+            
+            <form id="requirementForm">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="Enter your 10-digit mobile number">
+                </div>
+
+                <div class="form-group">
+                    <label for="requirement"><i class="fas fa-tools"></i> Infrastructure Requirement</label>
+                    <select id="requirement" required>
+                        <option value="">Select Requirement Type</option>
+                        <option value="school">🏫 School Building</option>
+                        <option value="hospital">🏥 Hospital/Clinic</option>
+                        <option value="water">💧 Water Pipeline</option>
+                        <option value="road">🛣️ Road Construction</option>
+                        <option value="electricity">💡 Electricity</option>
+                        <option value="college">🎓 College</option>
+                        <option value="sanitation">🚽 Sanitation Facilities</option>
+                        <option value="other">📋 Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-file-alt"></i> Detailed Description</label>
+                    <textarea id="description" rows="4" required placeholder="Describe the requirement in detail. Why is it important for the village? What problems will it solve?"></textarea>
+                </div>
+
+                <!-- Location Section -->
+                <div class="location-section">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                        <i class="fas fa-map-marker-alt"></i> Location Capture
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">
+                        Click the button below to automatically capture your current location. This location cannot be changed to ensure accuracy.
+                    </p>
+                    
+                    <button type="button" class="location-btn" onclick="captureLocation()">
+                        <i class="fas fa-camera"></i> Capture My Location
+                    </button>
+
+                    <div class="location-info" id="locationInfo">
+                        <p><strong>📍 Location Captured Successfully!</strong></p>
+                        <p>Address: <span id="capturedAddress">Loading address...</span></p>
+                        <p>GPS: <span id="capturedGPS">Loading coordinates...</span></p>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                    <i class="fas fa-paper-plane"></i> Submit Requirement
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let capturedLocation = null;
+
+        // Language switching
+        function changeLanguage(lang) {
+            alert(`Language changed to ${lang === 'en' ? 'English' : 'Hindi'}`);
+        }
+
+        // Capture location function
+        function captureLocation() {
+            const locationBtn = document.querySelector('.location-btn');
+            const locationInfo = document.getElementById('locationInfo');
+            const submitBtn = document.getElementById('submitBtn');
+
+            locationBtn.disabled = true;
+            locationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Capturing Location...';
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        // Success callback
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        
+                        capturedLocation = { lat, lng };
+                        
+                        // Display coordinates
+                        document.getElementById('capturedGPS').textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                        
+                        // Get address from coordinates (using reverse geocoding)
+                        getAddressFromCoordinates(lat, lng);
+                        
+                        locationInfo.style.display = 'block';
+                        submitBtn.disabled = false;
+                        
+                        locationBtn.innerHTML = '<i class="fas fa-check"></i> Location Captured';
+                        locationBtn.style.background = '#10b981';
+                    },
+                    function(error) {
+                        // Error callback
+                        alert('Error capturing location. Please ensure location services are enabled and try again.');
+                        locationBtn.disabled = false;
+                        locationBtn.innerHTML = '<i class="fas fa-camera"></i> Capture My Location';
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by this browser.');
+                locationBtn.disabled = false;
+                locationBtn.innerHTML = '<i class="fas fa-camera"></i> Capture My Location';
+            }
+        }
+
+        // Get address from coordinates (simulated)
+        function getAddressFromCoordinates(lat, lng) {
+            // In real implementation, you would use a geocoding service
+            // For demo, we'll simulate getting address
+            setTimeout(() => {
+                const addresses = [
+                    "Village A, Block X, District Y, State Z",
+                    "Village B, Block Z, District Y, State Z", 
+                    "Village C, Block X, District Y, State Z"
+                ];
+                
+                const randomAddress = addresses[Math.floor(Math.random() * addresses.length)];
+                document.getElementById('capturedAddress').textContent = randomAddress;
+            }, 2000);
+        }
+
+        // Form submission
+        document.getElementById('requirementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!capturedLocation) {
+                alert('Please capture your location first.');
+                return;
+            }
+
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                requirement: document.getElementById('requirement').value,
+                description: document.getElementById('description').value,
+                location: capturedLocation,
+                address: document.getElementById('capturedAddress').textContent
+            };
+
+            // Show success message
+            alert('✅ Requirement submitted successfully! Our team will review it and take necessary action.');
+            
+            // Reset form
+            this.reset();
+            document.getElementById('locationInfo').style.display = 'none';
+            document.getElementById('submitBtn').disabled = true;
+            
+            const locationBtn = document.querySelector('.location-btn');
+            locationBtn.disabled = false;
+            locationBtn.innerHTML = '<i class="fas fa-camera"></i> Capture My Location';
+            locationBtn.style.background = '';
+            
+            capturedLocation = null;
+        });
+
+        // Form validation
+        document.getElementById('requirementForm').addEventListener('input', function() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const requirement = document.getElementById('requirement').value;
+            const description = document.getElementById('description').value;
+            
+            // Basic phone validation
+            const phoneValid = /^\d{10}$/.test(phone.replace(/\D/g, ''));
+            
+            if (name && phoneValid && requirement && description && capturedLocation) {
+                document.getElementById('submitBtn').disabled = false;
+            } else {
+                document.getElementById('submitBtn').disabled = true;
+            }
+        });
+    </script>
+</body>
+                                                                                                             </html>
